@@ -1,4 +1,4 @@
-let expenses = []
+let expenses =[]
 let totalAmount = 0;
 const categorySelect = document.getElementById('category_select')
 const amountInput = document.getElementById('amount_input')
@@ -9,122 +9,104 @@ const expenseTableBody = document.getElementById('expense-table-body')
 const totalAmountCell = document.getElementById('total-amount')
 
 addBtn.addEventListener('click',function(){
-    const category = categorySelect.value;
-    const info = InfoInput.value;
-    const amount = Number(amountInput.value);
+    const category=categorySelect.value;
+    const info=InfoInput.value;
+    const amount =Number(amountInput.value);
     const date = dateInput.value;
 
     if(category ===''){
-        alert('Please select a category');
+        alert('please select a category');
         return;
     }
-    if(isNaN(amount) || amount <= 0){
-        alert('Please enter a valid amount');
+    if(isNaN(amount) || amount<=0){
+        alert('please enter a valid amount');
         return;
     }
     if(info ===''){
-        alert('Please enter a valid information');
+        alert('please enter a valid amount info');
         return;
     }
     if(date ===''){
-        alert('Please select a date');
+        alert('please select a date');
         return;
     }
     expenses.push({category,amount,info,date})
-    if (category === 'Income') {
+    if(category === 'Income'){
         totalAmount+=amount;
     }
-    if (category=== 'Expense') {
+    if(category === 'Expense'){
         totalAmount-=amount;
     }
-    totalAmountCell.textContent = totalAmount;
+     totalAmountCell.textContent = totalAmount;
 
-    const newRow = expenseTableBody.insertRow();
+     const newRow = expenseTableBody.insertRow();
 
-    const categoryCell = newRow.insertCell();
-    const AmountCell = newRow.insertCell();
-    const InfoCell = newRow.insertCell();
-    const dateCell = newRow.insertCell();
-    const deleteCell = newRow.insertCell();
+     const categoryCell = newRow.insertCell();
+     const AmountCell = newRow.insertCell();
+     const InfoCell = newRow.insertCell();
+     const dateCell = newRow.insertCell();
+     const deleteCell = newRow.insertCell();
 
-    const deletEBtn = document.createElement('button');
-    deletEBtn.textContent ='Delete';
-    deletEBtn.classList.add('delete-btn');
-    deletEBtn.addEventListener('click', function() {
-        expenses.splice(expenses,indexof(expense),1);
-        if (category === 'Income') {
+     const deleteBtn = document.createElement('button');
+     deleteBtn.textContent ='Delete';
+     deleteBtn.classList.add('delete-btn');
+     deleteBtn.addEventListener('click', function(){
+        expenses.splice(expenses.indexOf(expense),1);
+        if(category === 'Income'){
             totalAmount-=amount;
         }
-        if (category=== 'Expense') {
+        if(category === 'Expense'){
             totalAmount+=amount;
         }
 
         totalAmountCell.textContent=totalAmount;
-        expenseTableBody.removeChild(new Row)
-    })
-    const expense = expenses[expenses.length-1];
-    categoryCell.textContent=expense.category;
-    AmountCellCell.textContent=expense.amount;
-    InfoCell.textContent=expense.info;
-    dateCell.textContent=expense.date;
-    deleteCell.appendChild(deletEBtn);
+        expenseTableBody.removeChild(newRow)
+     })
+     const expense = expenses[expenses.length-1];
+     categoryCell.textContent=expense.category;
+     AmountCell.textContent=expense.amount;
+     InfoCell.textContent=expense.info;
+     dateCell.textContent=expense.date;
+     deleteCell.appendChild(deleteBtn);
 
 
 });
-
 for(const expense of expenses){
-    if(category ===''){
-        alert('Please select a category');
-        return;
-    }
-    if(isNaN(amount) || amount <= 0){
-        alert('Please enter a valid amount');
-        return;
-    }
-    if(info ===''){
-        alert('Please enter a valid information');
-        return;
-    }
-    if(date ===''){
-        alert('Please select a date');
-        return;
-    }
-    expenses.push({category,amount,info,date})
-    if (category === 'Income') {
+    if(category === 'Income'){
         totalAmount+=amount;
     }
-    if (category=== 'Expense') {
+    if(category === 'Expense'){
         totalAmount-=amount;
     }
-    totalAmountCell.textContent = totalAmount;
+     totalAmountCell.textContent = totalAmount;
 
-    const newRow = expenseTableBody.insertRow();
+     const newRow = expenseTableBody.insertRow();
 
-    const categoryCell = newRow.insertCell();
-    const AmountCell = newRow.insertCell();
-    const InfoCell = newRow.insertCell();
-    const dateCell = newRow.insertCell();
-    const deleteCell = newRow.insertCell();
+     const categoryCell = newRow.insertCell();
+     const AmountCell = newRow.insertCell();
+     const InfoCell = newRow.insertCell();
+     const dateCell = newRow.insertCell();
+     const deleteCell = newRow.insertCell();
 
-    const deletEBtn = document.createElement('button');
-    deletEBtn.textContent ='Delete';
-    deletEBtn.classList.add('delete-btn');
-    deletEBtn.addEventListener('click', function() {
-        expenses.splice(expenses,indexof(expense),1);
-        if (category === 'Income') {
+     const deleteBtn = document.createElement('button');
+     deleteBtn.textContent ='Delete';
+     deleteBtn.classList.add('delete-btn');
+     deleteBtn.addEventListener('click', function(){
+        expenses.splice(expenses.indexOf(expense),1);
+        if(category === 'Income'){
             totalAmount-=amount;
-        }
-        if (category=== 'Expense') {
+        } 
+        if(category === 'Expense'){
             totalAmount+=amount;
         }
 
         totalAmountCell.textContent=totalAmount;
         expenseTableBody.removeChild(new Row)
-    })
-    const expense = expenses[expenses.length-1];
-    categoryCell.textContent=expense.category;
-    AmountCellCell.textContent=expense.amount;
-    InfoCell.textContent=expense.info;
-    dateCell.textContent=expense.date;
-    deleteCell.appendChild(deletEBtn);
+     })
+     const expense = expenses[expenses.length-1];
+     categoryCell.textContent=expense.category;
+     AmountCell.textContent=expense.amount;
+     InfoCell.textContent=expense.info;
+     dateCell.textContent=expense.date;
+     deleteCell.appendChild(deleteBtn);
 }
